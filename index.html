@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diksha Traders | Premium Apparel Wholesale</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Amazon/Flipkart Inspired Top Utility Navigation Bar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- Store Branding Identity -->
+            <div class="text-center md:text-left cursor-pointer group" onclick="filterProducts('All')">
+                <div class="flex items-center justify-center md:justify-start gap-2">
+                    <div class="bg-gradient-to-tr from-indigo-500 to-cyan-400 p-2 rounded-xl shadow-lg shadow-indigo-500/20">
+                        <i class="fa-solid fa-shirt text-slate-950 text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">DIKSHA TRADERS</h1>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1 font-medium tracking-wide"><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i> Krishna Plaza, Kanpur| Hub</p>
+            </div>
+
+            <!-- Operations Controller Center -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                
+                <!-- Authentication State Machine Container -->
+                <div id="auth-section" class="flex gap-2">
+                    <button onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all duration-300">Login</button>
+                    <button onclick="openAuthModal('register')" class="bg-slate-800 hover:bg-slate-700 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl border border-slate-700 transition-all duration-300">Register</button>
+                </div>
+
+                <!-- Logged In Merchant Sub-Menu Operations -->
+                <div id="user-menu" class="hidden flex items-center gap-2">
+                    <button onclick="toggleModal('orders-modal'); fetchMyOrders();" class="text-slate-300 hover:text-white text-xs font-bold bg-slate-800 px-4 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-all duration-300 flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left text-indigo-400"></i> My Orders</button>
+                    <button onclick="handleLogout()" class="bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 text-xs font-bold px-3 py-2.5 rounded-xl border border-rose-500/20 transition-all duration-300" title="Sign Out Account"><i class="fa-solid fa-power-off"></i></button>
+                </div>
+
+                <!-- Dynamic Cart Anchor Trigger -->
+                <button onclick="toggleCart()" class="relative p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-indigo-400 hover:text-white transition-all duration-300 group">
+                    <i class="fa-solid fa-basket-shopping text-xl group-hover:scale-110 transition duration-300"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-emerald-500 text-white rounded-full text-[10px] w-5 h-5 flex items-center justify-center font-bold shadow-md ring-2 ring-slate-900">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactive Marketplace Hero Promotion Banner -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-indigo-500/10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="z-10 text-center md:text-left">
+                <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Wholesale Season Live</span>
+                <h2 class="text-2xl sm:text-4xl font-black tracking-tight mt-3 mb-2 leading-tight">Direct Factory Distributions</h2>
+                <p class="text-sm text-slate-400 max-w-xl">Stock your business ledger directly from the primary source. Bulk premium ready configurations across Pants, Jeans, Shirts, and traditional Kurtas.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto z-10">
+                <a href="tel:+919839183050" class="bg-emerald-600 hover:bg-emerald-500 text-white text-center font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-emerald-600/20 transition duration-300 flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call Order Desk</a>
+                <button onclick="document.getElementById('category-filters').scrollIntoView({behavior: 'smooth'})" class="bg-white/10 hover:bg-white/20 text-white text-center font-bold text-sm px-6 py-3 rounded-xl border border-white/10 transition duration-300">Explore Catalog</button>
+            </div>
+            <!-- Creative Abstract Geometry shapes -->
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        </div>
+    </div>
+
+    <!-- Main Operational Workspace Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Left Column Sidebar Filter and Support Panel -->
+        <aside class="lg:col-span-1 flex flex-col gap-6">
+            
+            <!-- Category Collection List Selector -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/60 h-fit">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-3 mb-4">Stock Segments</h3>
+                <div class="flex flex-col gap-1" id="category-filters">
+                    <button onclick="filterProducts('All')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold bg-indigo-50 text-indigo-700 w-full transition flex items-center justify-between group"><span>All Collection</span><i class="fa-solid fa-chevron-right text-xs opacity-50 group-hover:translate-x-1 transition"></i></button>
+                    <button onclick="filterProducts('Pant')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Pants (Archit)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
+                    <button onclick="filterProducts('Jeans')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Jeans (RNG)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
+                    <button onclick="filterProducts('Shirt')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Shirts (Vardhaman)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
+                    <button onclick="filterProducts('Kurta')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Kurtas (Sardara, Reewaz)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
+                    <button onclick="filterProducts('Legi')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Legi (Maxi)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
+                </div>
+            </div>
+
+            <!-- Modern Interactive Customer Helpdesk Ticket Module -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/60 h-fit">
+                <div class="flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                    <div class="bg-indigo-50 p-2 rounded-lg text-indigo-600"><i class="fa-solid fa-headset text-sm"></i></div>
+                    <h4 class="text-xs font-bold text-slate-900 uppercase tracking-widest">Helpdesk Support</h4>
+                </div>
+                <form onsubmit="handleSupportSubmit(event)" class="flex flex-col gap-3">
+                    <input type="text" id="sup-name" placeholder="Contact Name" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50">
+                    <input type="email" id="sup-email" placeholder="Business Email" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50">
+                    <textarea id="sup-msg" placeholder="Type message request details here..." rows="3" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50 resize-none custom-scrollbar"></textarea>
+                    <button type="submit" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-md transition-all duration-300">Submit Support Ticket</button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- Right Column Product Collection Display Grid Layout Frame -->
+        <section class="lg:col-span-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <h2 id="category-title" class="text-2xl font-black text-slate-900 tracking-wide">Wholesale Catalog</h2>
+                <span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-xl flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500 animate-pulse"></i> Live Rupee Rates Dispatched</span>
+            </div>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Dynamically constructed items list -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Flipkart-Style Fixed Floating Conversational AI Chatbot Terminal Widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="chat-window" class="hidden w-85 h-100 bg-white rounded-2xl shadow-2xl border border-slate-200/80 flex flex-col mb-4 overflow-hidden transform origin-bottom-right transition-all duration-300">
+            <!-- Chatbot Header -->
+            <div class="bg-slate-950 text-white p-4 font-bold text-sm flex justify-between items-center border-b border-indigo-500/20 shadow-md">
+                <div class="flex items-center gap-2">
+                    <div class="relative w-7 h-7 bg-gradient-to-tr from-indigo-500 to-cyan-400 rounded-lg flex items-center justify-center text-slate-950"><i class="fa-solid fa-robot text-xs"></i><span class="absolute bottom-0 right-0 w-2 h-2 bg-emerald-400 rounded-full ring-2 ring-slate-950"></span></div>
+                    <div class="flex flex-col">
+                        <span class="leading-tight">Diksha AI Support</span>
+                        <span class="text-[9px] text-emerald-400 font-medium">Online Helpdesk Bot</span>
+                    </div>
+                </div>
+                <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white text-xl transition">&times;</button>
+            </div>
+            <!-- Chat Messages Log Stack -->
+            <div id="chat-logs" class="p-4 overflow-y-auto flex-grow flex flex-col gap-3 bg-slate-50 text-xs custom-scrollbar">
+                <div class="bg-indigo-50 text-indigo-950 p-3 rounded-2xl max-w-[85%] self-start shadow-xs border border-indigo-100/30 leading-relaxed">
+                    Hello! Welcome to the Diksha Traders digital support desk. Ask me about our Krishna Plaza location, catalog rates, or wholesale operations.
+                </div>
+            </div>
+            <!-- Chat Input Controller Form -->
+            <form onsubmit="sendChatBotMessage(event)" class="p-3 border-t border-slate-100 flex gap-2 bg-white">
+                <input type="text" id="chat-input" placeholder="Ask a support question..." required class="border border-slate-200 px-3 py-2.5 rounded-xl text-xs flex-grow focus:outline-indigo-500 bg-slate-50">
+                <button type="submit" class="bg-indigo-600 text-white px-4 rounded-xl hover:bg-indigo-500 transition-all shadow-md shadow-indigo-600/10 flex items-center justify-center"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+        <!-- Main Float Button Hub -->
+        <button onclick="toggleChatWindow()" class="bg-indigo-600 text-white p-4 rounded-full shadow-2xl hover:bg-indigo-500 transition-all duration-300 hover:scale-110 flex items-center justify-center relative group shadow-indigo-600/30">
+            <i class="fa-solid fa-comments text-xl"></i>
+            <span class="absolute -top-1 -left-1 w-3 h-3 bg-emerald-400 rounded-full ring-2 ring-slate-50 animate-ping"></span>
+        </button>
+    </div>
+
+    <!-- Side-out Shopping Drawer Cart -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
+        <div class="p-4 bg-slate-950 text-white flex justify-between items-center border-b border-indigo-500/20">
+            <h3 class="font-black tracking-wide text-base flex items-center gap-2"><i class="fa-solid fa-file-invoice text-indigo-400"></i> Wholesale Order Sheet</h3>
+            <button onclick="toggleCart()" class="text-slate-400 hover:text-white text-2xl transition">&times;</button>
+        </div>
+        <div id="cart-items" class="p-4 overflow-y-auto flex-grow flex flex-col gap-3 bg-slate-50/50 custom-scrollbar"></div>
+        <div class="p-5 border-t border-slate-200 bg-white flex flex-col gap-4">
+            <div class="flex justify-between font-black text-slate-900 text-xl tracking-tight">
+                <span>Total Invoice Value:</span>
+                <span id="cart-total" class="text-indigo-600">₹0.00</span>
+            </div>
+            <button onclick="processOrderCheckout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-600/10 transition tracking-wide text-sm uppercase">Confirm Order & Send Invoice</button>
+        </div>
+    </div>
+
+    <!-- Integrated Multi-State Authentication Modal Box Wrapper -->
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300">
+            <button onclick="toggleModal('auth-modal')" class="absolute top-4 right-4 text-xl text-slate-400 hover:text-slate-600 transition">&times;</button>
+            <h3 id="auth-title" class="text-xl font-black text-slate-900 mb-4 tracking-wide">Merchant Portal Login</h3>
+            
+            <form onsubmit="handleAuthSubmit(event)" class="flex flex-col gap-3.5">
+                <div id="email-group" class="hidden flex flex-col gap-1">
+                    <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Business Email Address</label>
+                    <input type="email" id="auth-email" placeholder="name@firm.com" class="border border-slate-200 p-3 rounded-xl text-xs bg-slate-50 focus:outline-indigo-500">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Firm Username Handle</label>
+                    <input type="text" id="auth-user" required placeholder="Enter active user handle" class="border border-slate-200 p-3 rounded-xl text-xs bg-slate-50 focus:outline-indigo-500">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Secure Access Token Key</label>
+                    <input type="password" id="auth-pass" required placeholder="••••••••" class="border border-slate-200 p-3 rounded-xl text-xs bg-slate-50 focus:outline-indigo-500">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl text-sm shadow-md shadow-indigo-600/10 transition-all mt-2 uppercase tracking-wider">Sign In Session</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Previous Orders Invoices History Modal Window Display Panel -->
+    <div id="orders-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl flex flex-col max-h-[85vh] border border-slate-100">
+            <button onclick="toggleModal('orders-modal')" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-slate-600 transition">&times;</button>
+            <h3 class="text-xl font-black text-slate-900 mb-5 tracking-wide flex items-center gap-2"><i class="fa-solid fa-receipt text-indigo-500"></i> Wholesale Purchase Ledger History</h3>
+            <div id="orders-log-container" class="overflow-y-auto flex-grow flex flex-col gap-4 pr-1 custom-scrollbar"></div>
+        </div>
+    </div>
+
+    <!-- Product Grid Quickview Box Details Popup Modal Frame -->
+    <div id="details-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden relative shadow-2xl border border-slate-100">
+            <button onclick="toggleModal('details-modal')" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-white bg-slate-950/40 hover:bg-slate-950/70 w-8 h-8 rounded-full flex items-center justify-center transition z-10">&times;</button>
+            <div id="details-content"></div>
+        </div>
+    </div>
+
+    <!-- Layout Base Information Footer -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-900 mt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-sm">
+            <div>
+                <h4 class="text-white font-black text-lg mb-4 tracking-wider flex items-center gap-2"><i class="fa-solid fa-store text-indigo-400"></i> DIKSHA TRADERS</h4>
+                <p class="leading-relaxed text-slate-400">Krishna Plaza<br>Kanpur, Uttar Pradesh, India</p>
+            </div>
+            <div>
+                <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4"><i class="fa-solid fa-address-book text-indigo-400"></i> Distribution Channels</h4>
+                <p class="mb-2.5 flex items-center gap-2.5 hover:text-white transition"><i class="fa-solid fa-phone text-emerald-400"></i> +91 9839183050</p>
+                <p class="flex items-center gap-2.5 hover:text-white transition"><i class="fa-solid fa-envelope text-indigo-400"></i> upendrav13@gmail.com</p>
+            </div>
+            <div>
+                <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4"><i class="fa-solid fa-circle-nodes text-indigo-400"></i> Wholesale Mandate</h4>
+                <p class="text-xs leading-relaxed text-slate-500">Secure automated merchant dashboard interface. Processing configurations routes verified ledger data directly into localized memory arrays.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-medium">
+            &copy; 2026 Diksha Traders. All Wholesale Base Distribution Rights Maintained.
+        </div>
+    </footer>
+
+    <!-- Frontend Core Application Controller Script Logic Framework -->
+    <script>
+        let allProducts = [];
+        let activeCart = {};
+        let currentUser = JSON.parse(localStorage.getItem('merchantUser')) || null;
+        let activeAuthMode = 'login';
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            updateUserInterfaceContext();
+            try {
+                const response = await fetch('/api/products');
+                allProducts = await response.json();
+                renderProductGrid(allProducts);
+            } catch (err) { console.error("Component initialization crash wrapper hook:", err); }
+        });
+
+        function renderProductGrid(items) {
+            const container = document.getElementById('product-grid');
+            container.innerHTML = '';
+            
+            if(items.length === 0) {
+                container.innerHTML = `<p class="text-slate-400 col-span-full text-center py-16 text-sm font-medium">No wholesale positions currently match your filter query parameters.</p>`;
+                return;
+            }
+
+            items.forEach(p => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl border border-slate-200/50 overflow-hidden flex flex-col justify-between hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group relative">
+                        <div class="relative overflow-hidden bg-slate-100">
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 text-[9px] font-black uppercase tracking-widest bg-slate-950/80 text-white backdrop-blur-xs px-2.5 py-1 rounded-md border border-white/10">${p.category}</span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-extrabold text-slate-900 text-lg group-hover:text-indigo-600 transition duration-200">${p.name}</h3>
+                                <p class="text-xs text-slate-400 font-medium mt-0.5">Brand / Mfr: ${p.brand}</p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Wholesale Rate</span>
+                                    <span class="text-xl font-black text-slate-950">₹${p.price}</span>
+                                </div>
+                                <div class="flex gap-1">
+                                    <button onclick="viewDetailsPopup(${p.id})" class="text-slate-400 hover:text-slate-700 hover:bg-slate-50 p-2.5 rounded-xl transition" title="Quickview Position Details"><i class="fa-solid fa-eye text-base"></i></button>
+                                    <button onclick="addToCartItem(${p.id})" class="bg-slate-950 hover:bg-indigo-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md flex items-center gap-1.5"><i class="fa-solid fa-plus text-[10px]"></i> Add To Sheet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function filterProducts(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.className = "text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group";
+                const icon = btn.querySelector('i');
+                if(icon) icon.className = "fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition";
+            });
+
+            event.currentTarget.className = "category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold bg-indigo-50 text-indigo-700 w-full transition flex items-center justify-between group";
+            const activeIcon = event.currentTarget.querySelector('i');
+            if(activeIcon) activeIcon.className = "fa-solid fa-chevron-right text-xs opacity-50";
+
+            document.getElementById('category-title').innerText = category === 'All' ? 'Wholesale Catalog' : `${category} Collection`;
+            renderProductGrid(category === 'All' ? allProducts : allProducts.filter(p => p.category === category));
+        }
+
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('translate-x-full'); }
+        function toggleModal(id) { document.getElementById(id).classList.toggle('hidden'); }
+        function toggleChatWindow() { document.getElementById('chat-window').classList.toggle('hidden'); }
+
+        function openAuthModal(mode) {
+            activeAuthMode = mode;
+            document.getElementById('auth-title').innerText = mode === 'login' ? 'Merchant Portal Login' : 'Register New Merchant Profile';
+            document.getElementById('auth-submit-btn').innerText = mode === 'login' ? 'Sign In Session' : 'Complete Registration';
+            document.getElementById('email-group').classList.toggle('hidden', mode === 'login');
+            toggleModal('auth-modal');
+        }
+
+        async function handleAuthSubmit(e) {
+            e.preventDefault();
+            const username = document.getElementById('auth-user').value.trim();
+            const password = document.getElementById('auth-pass').value;
+            const email = document.getElementById('auth-email').value.trim();
+
+            const endpoint = activeAuthMode === 'login' ? '/api/login' : '/api/register';
+            const payload = activeAuthMode === 'login' ? { username, password } : { username, email, password };
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const res = await response.json();
+                if (!response.ok) throw new Error(res.message || "Failed computing authorization validation credentials workflow.");
+
+                if (activeAuthMode === 'login') {
+                    currentUser = res.user;
+                    localStorage.setItem('merchantUser', JSON.stringify(currentUser));
+                    updateUserInterfaceContext();
+                    toggleModal('auth-modal');
+                    alert(`Access granted. Welcome back, ${username}!`);
+                } else {
+                    alert("Merchant operational configuration profile registered. You can now login.");
+                    openAuthModal('login');
+                }
+            } catch (err) { alert(err.message); }
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            localStorage.removeItem('merchantUser');
+            updateUserInterfaceContext();
+            activeCart = {};
+            updateCartInterfaceSummary();
+            alert("Signed out securely.");
+        }
+
+        function updateUserInterfaceContext() {
+            const authSec = document.getElementById('auth-section');
+            const userMenu = document.getElementById('user-menu');
+            if(currentUser) {
+                authSec.innerHTML = `<span class="text-xs font-bold bg-slate-800 border border-slate-700 text-indigo-400 px-4 py-2.5 rounded-xl uppercase flex items-center gap-2 shadow-inner"><i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-pulse"></i> ${currentUser.username}</span>`;
+                userMenu.classList.remove('hidden');
+            } else {
+                authSec.innerHTML = `
+                    <button onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all duration-300">Login</button>
+                    <button onclick="openAuthModal('register')" class="bg-slate-800 hover:bg-slate-700 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl border border-slate-700 transition-all duration-300">Register</button>`;
+                userMenu.classList.add('hidden');
+            }
+        }
+
+        function addToCartItem(id) { activeCart[id] = (activeCart[id] || 0) + 1; updateCartInterfaceSummary(); }
+        function updateCartQuantity(id, amt) { activeCart[id] += amt; if (activeCart[id] <= 0) delete activeCart[id]; updateCartInterfaceSummary(); }
+
+        function updateCartInterfaceSummary() {
+            const countContainer = document.getElementById('cart-count');
+            const listContainer = document.getElementById('cart-items');
+            const totalContainer = document.getElementById('cart-total');
+            listContainer.innerHTML = '';
+            let itemsCount = 0, netTotal = 0;
+
+            Object.entries(activeCart).forEach(([itemId, qty]) => {
+                const product = allProducts.find(p => p.id == itemId);
+                if (!product) return;
+                itemsCount += qty;
+                netTotal += product.price * qty;
+
+                listContainer.innerHTML += `
+                    <div class="bg-white border border-slate-200/60 p-4 rounded-xl flex justify-between items-center shadow-xs">
+                        <div class="flex-grow pr-2">
+                            <h4 class="font-extrabold text-slate-900 text-sm leading-tight">${product.name}</h4>
+                            <p class="text-xs text-slate-400 font-semibold mt-0.5">₹${product.price} × ${qty}</p>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200/40">
+                            <button onclick="updateCartQuantity(${product.id}, -1)" class="font-black px-1.5 hover:text-rose-600 transition text-sm">-</button>
+                            <span class="text-xs font-bold w-4 text-center text-slate-700">${qty}</span>
+                            <button onclick="updateCartQuantity(${product.id}, 1)" class="font-black px-1.5 hover:text-emerald-600 transition text-sm">+</button>
+                        </div>
+                    </div>`;
+            });
+            if (itemsCount === 0) listContainer.innerHTML = `<p class="text-slate-400 text-center py-20 text-xs font-medium bg-white rounded-xl border border-dashed border-slate-200">Wholesale sheet configuration is empty.</p>`;
+            countContainer.innerText = itemsCount;
+            totalContainer.innerText = `₹${netTotal.toFixed(2)}`;
+        }
+
+        function viewDetailsPopup(id) {
+            const product = allProducts.find(p => p.id === id);
+            if(!product) return;
+            document.getElementById('details-content').innerHTML = `
+                <img src="${product.img}" alt="${product.name}" class="w-full h-72 object-cover bg-slate-50">
+                <div class="p-6">
+                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-100/30">${product.category}</span>
+                    <h3 class="text-xl font-black text-slate-900 mt-3">${product.name}</h3>
+                    <p class="text-xs text-slate-400 mt-1">Wholesale Distributor Label: <span class="font-bold text-slate-600">${product.brand}</span></p>
+                    <div class="mt-5 bg-slate-50 border border-slate-200/50 p-4 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Wholesale Base Rate</p>
+                            <p class="text-2xl font-black text-slate-950 mt-0.5">₹${product.price}</p>
+                        </div>
+                        <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100 flex items-center gap-1.5"><i class="fa-solid fa-boxes-stacked"></i> Batch Ready: ${product.stock} units</span>
+                    </div>
+                    <button onclick="addToCartItem(${product.id}); toggleModal('details-modal');" class="w-full bg-slate-950 hover:bg-indigo-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition mt-6 text-sm uppercase tracking-wide">Append Bulk Lot Sheet</button>
+                </div>`;
+            toggleModal('details-modal');
+        }
+
+        async function fetchMyOrders() {
+            const container = document.getElementById('orders-log-container');
+            container.innerHTML = '<p class="text-slate-400 text-center py-10 text-xs font-medium">Querying secure historical ledger lines...</p>';
+            if(!currentUser) return;
+            try {
+                const response = await fetch(`/api/orders/${currentUser.username}`);
+                const log = await response.json();
+                container.innerHTML = '';
+                if(log.length === 0) {
+                    container.innerHTML = '<p class="text-slate-400 text-center py-16 text-xs font-semibold bg-slate-50 rounded-2xl border border-dashed border-slate-200">No historical invoices registered under this account handle profile context.</p>';
+                    return;
+                }
+                log.reverse().forEach(o => {
+                    container.innerHTML += `
+                        <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:border-slate-300 transition">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-black text-slate-950 text-sm tracking-wide">${o.orderId}</span>
+                                    <span class="text-[9px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-md">Dispatched</span>
+                                </div>
+                                <p class="text-xs text-slate-400 font-medium mt-1"><i class="fa-solid fa-calendar-day text-[10px]"></i> Date Logged: ${o.date} | Receipt Dispatched: ${o.email}</p>
+                            </div>
+                            <span class="text-lg font-black text-indigo-600">${o.totalAmount}</span>
+                        </div>`;
+                });
+            } catch(err) { container.innerHTML = '<p class="text-rose-500 text-center py-6 text-xs">Error loading database lines wrapper.</p>'; }
+        }
+
+        async function handleSupportSubmit(e) {
+            e.preventDefault();
+            const payload = {
+                name: document.getElementById('sup-name').value.trim(),
+                email: document.getElementById('sup-email').value.trim(),
+                message: document.getElementById('sup-msg').value.trim()
+            };
+            try {
+                const response = await fetch('/api/support', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const res = await response.json();
+                if(res.success) {
+                    alert(`Support ticket initialized successfully!\nReference Tracking ID: ${res.ticketId}`);
+                    e.target.reset();
+                }
+            } catch (err) { alert("Failed submitting helpdesk request."); }
+        }
+
+        async function sendChatBotMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const logBox = document.getElementById('chat-logs');
+            const userMsg = input.value.trim();
+            
+            logBox.innerHTML += `<div class="bg-indigo-600 text-white p-3 rounded-2xl max-w-[85%] self-end shadow-md shadow-indigo-600/10 leading-relaxed">${userMsg}</div>`;
+            input.value = '';
+            logBox.scrollTop = logBox.scrollHeight;
+
+            try {
+                const response = await fetch('/api/chatbot', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ message: userMsg })
+                });
+                const res = await response.json();
+                
+                setTimeout(() => {
+                    logBox.innerHTML += `<div class="bg-white text-slate-900 border border-slate-200 p-3 rounded-2xl max-w-[85%] self-start shadow-xs leading-relaxed">${res.reply}</div>`;
+                    logBox.scrollTop = logBox.scrollHeight;
+                }, 250);
+            } catch (err) { console.error(err); }
+        }
+
+        async function processOrderCheckout() {
+            const itemEntries = Object.entries(activeCart);
+            if(itemEntries.length === 0) return alert("Wholesale lot ledger sheet config is empty.");
+
+            const payload = {
+                items: itemEntries.map(([id, qty]) => {
+                    const match = allProducts.find(p => p.id == id);
+                    return { name: match.name, qty, price: match.price };
+                }),
+                totalAmount: document.getElementById('cart-total').innerText,
+                username: currentUser ? currentUser.username : "Guest",
+                email: currentUser ? currentUser.email : "upendrav13@gmail.com"
+            };
+
+            try {
+                const response = await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const confirmation = await response.json();
+                if(confirmation.success) {
+                    alert(`Wholesale Batch Order Confirmed Successfully!\nOrder Reference ID: ${confirmation.order.orderId}\nInvoice statement copy triggered to ${payload.email}`);
+                    activeCart = {};
+                    updateCartInterfaceSummary();
+                    toggleCart();
+                }
+            } catch (err) { alert("Checkout transaction processing failure error wrapper."); }
+        }
+    </script>
+</body>
+</html>
