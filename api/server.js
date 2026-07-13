@@ -85,15 +85,15 @@ app.post('/api/support', (req, res) => {
     res.json({ success: true, ticketId });
 });
 
-// Built-in AI Chatbot Knowledge System
+// Built-in AI Chatbot Knowledge System (FIXED: Number updated to 9839183059)
 app.post('/api/chatbot', (req, res) => {
     const msg = req.body.message.toLowerCase();
-    let reply = "Thank you for contacting Diksha Traders support. For urgent distribution orders, call us directly at +91 9839183050.";
+    let reply = "Thank you for contacting Diksha Traders support. For urgent distribution orders, call us directly at +91 9839183059.";
     
     if (msg.includes("address") || msg.includes("location") || msg.includes("plaza")) {
         reply = "Diksha Traders is located at Krishna Plaza, near Manjushree Talkies.";
     } else if (msg.includes("contact") || msg.includes("phone") || msg.includes("mobile")) {
-        reply = "You can reach out to our helpdesk at +91 9839183050 or email us via upendrav13@gmail.com.";
+        reply = "You can reach out to our helpdesk at +91 9839183059 or email us via upendrav13@gmail.com.";
     } else if (msg.includes("pant") || msg.includes("jeans") || msg.includes("shirt") || msg.includes("kurta")) {
         reply = "We offer bulk custom variants of Archit Pants, RNG Jeans, Vardhaman Shirts, and Sardara/Reewaz Kurtas.";
     } else if (msg.includes("wholesale") || msg.includes("price")) {
@@ -102,10 +102,8 @@ app.post('/api/chatbot', (req, res) => {
     res.json({ reply });
 });
 
-// FIXED: Adjusted to reference one level up since this file now lives inside the /api folder
 app.use((req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-// EXPORT: Required for Vercel serverless environment execution
 module.exports = app;
