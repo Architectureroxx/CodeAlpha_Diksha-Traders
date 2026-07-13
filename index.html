@@ -15,11 +15,9 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Amazon/Flipkart Inspired Top Utility Navigation Bar -->
     <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-xl border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             
-            <!-- Store Branding Identity -->
             <div class="text-center md:text-left cursor-pointer group" onclick="filterProducts('All')">
                 <div class="flex items-center justify-center md:justify-start gap-2">
                     <div class="bg-gradient-to-tr from-indigo-500 to-cyan-400 p-2 rounded-xl shadow-lg shadow-indigo-500/20">
@@ -27,25 +25,20 @@
                     </div>
                     <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">DIKSHA TRADERS</h1>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1 font-medium tracking-wide"><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i> Krishna Plaza, Kanpur| Hub</p>
+                <p class="text-[11px] text-slate-400 mt-1 font-medium tracking-wide"><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i> Krishna Plaza, Near Manjushree Talkies | Hub</p>
             </div>
 
-            <!-- Operations Controller Center -->
             <div class="flex flex-wrap items-center justify-center gap-4">
-                
-                <!-- Authentication State Machine Container -->
                 <div id="auth-section" class="flex gap-2">
                     <button onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all duration-300">Login</button>
                     <button onclick="openAuthModal('register')" class="bg-slate-800 hover:bg-slate-700 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl border border-slate-700 transition-all duration-300">Register</button>
                 </div>
 
-                <!-- Logged In Merchant Sub-Menu Operations -->
                 <div id="user-menu" class="hidden flex items-center gap-2">
-                    <button onclick="toggleModal('orders-modal'); fetchMyOrders();" class="text-slate-300 hover:text-white text-xs font-bold bg-slate-800 px-4 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition-all duration-300 flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left text-indigo-400"></i> My Orders</button>
-                    <button onclick="handleLogout()" class="bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 text-xs font-bold px-3 py-2.5 rounded-xl border border-rose-500/20 transition-all duration-300" title="Sign Out Account"><i class="fa-solid fa-power-off"></i></button>
+                    <button onclick="toggleModal('orders-modal'); fetchMyOrders();" class="text-slate-300 hover:text-white text-xs font-bold bg-slate-800 px-4 py-2.5 rounded-xl border border-slate-700 transition-all duration-300 flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left text-indigo-400"></i> My Orders</button>
+                    <button onclick="handleLogout()" class="bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 text-xs font-bold px-3 py-2.5 rounded-xl border border-rose-500/20 transition-all duration-300"><i class="fa-solid fa-power-off"></i></button>
                 </div>
 
-                <!-- Dynamic Cart Anchor Trigger -->
                 <button onclick="toggleCart()" class="relative p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-indigo-400 hover:text-white transition-all duration-300 group">
                     <i class="fa-solid fa-basket-shopping text-xl group-hover:scale-110 transition duration-300"></i>
                     <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-emerald-500 text-white rounded-full text-[10px] w-5 h-5 flex items-center justify-center font-bold shadow-md ring-2 ring-slate-900">0</span>
@@ -54,7 +47,6 @@
         </div>
     </header>
 
-    <!-- Interactive Marketplace Hero Promotion Banner -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         <div class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-indigo-500/10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="z-10 text-center md:text-left">
@@ -63,35 +55,29 @@
                 <p class="text-sm text-slate-400 max-w-xl">Stock your business ledger directly from the primary source. Bulk premium ready configurations across Pants, Jeans, Shirts, and traditional Kurtas.</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto z-10">
-                <a href="tel:+919839183050" class="bg-emerald-600 hover:bg-emerald-500 text-white text-center font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-emerald-600/20 transition duration-300 flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call Order Desk</a>
+                <a href="tel:+919839183059" class="bg-emerald-600 hover:bg-emerald-500 text-white text-center font-bold text-sm px-6 py-3 rounded-xl shadow-lg transition duration-300 flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call Order Desk</a>
                 <button onclick="document.getElementById('category-filters').scrollIntoView({behavior: 'smooth'})" class="bg-white/10 hover:bg-white/20 text-white text-center font-bold text-sm px-6 py-3 rounded-xl border border-white/10 transition duration-300">Explore Catalog</button>
             </div>
-            <!-- Creative Abstract Geometry shapes -->
             <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -left-10 -top-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
         </div>
     </div>
 
-    <!-- Main Operational Workspace Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
         
-        <!-- Left Column Sidebar Filter and Support Panel -->
         <aside class="lg:col-span-1 flex flex-col gap-6">
-            
-            <!-- Category Collection List Selector -->
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/60 h-fit">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-3 mb-4">Stock Segments</h3>
                 <div class="flex flex-col gap-1" id="category-filters">
-                    <button onclick="filterProducts('All')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold bg-indigo-50 text-indigo-700 w-full transition flex items-center justify-between group"><span>All Collection</span><i class="fa-solid fa-chevron-right text-xs opacity-50 group-hover:translate-x-1 transition"></i></button>
-                    <button onclick="filterProducts('Pant')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Pants (Archit)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
-                    <button onclick="filterProducts('Jeans')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Jeans (RNG)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
-                    <button onclick="filterProducts('Shirt')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Shirts (Vardhaman)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
-                    <button onclick="filterProducts('Kurta')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Kurtas (Sardara, Reewaz)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
-                    <button onclick="filterProducts('Legi')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Legi (Maxi)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition"></i></button>
+                    <button onclick="filterProducts('All')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold bg-indigo-50 text-indigo-700 w-full transition flex items-center justify-between group"><span>All Collection</span><i class="fa-solid fa-chevron-right text-xs opacity-50 transition"></i></button>
+                    <button onclick="filterProducts('Pant')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Pants (Archit)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 transition"></i></button>
+                    <button onclick="filterProducts('Jeans')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Jeans (RNG)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 transition"></i></button>
+                    <button onclick="filterProducts('Shirt')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Shirts (Vardhaman)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 transition"></i></button>
+                    <button onclick="filterProducts('Kurta')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Kurtas (Sardara, Reewaz)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 transition"></i></button>
+                    <button onclick="filterProducts('Legi')" class="category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group"><span>Legi (Maxi)</span><i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 transition"></i></button>
                 </div>
             </div>
 
-            <!-- Modern Interactive Customer Helpdesk Ticket Module -->
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/60 h-fit">
                 <div class="flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
                     <div class="bg-indigo-50 p-2 rounded-lg text-indigo-600"><i class="fa-solid fa-headset text-sm"></i></div>
@@ -100,28 +86,23 @@
                 <form onsubmit="handleSupportSubmit(event)" class="flex flex-col gap-3">
                     <input type="text" id="sup-name" placeholder="Contact Name" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50">
                     <input type="email" id="sup-email" placeholder="Business Email" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50">
-                    <textarea id="sup-msg" placeholder="Type message request details here..." rows="3" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50 resize-none custom-scrollbar"></textarea>
+                    <textarea id="sup-msg" placeholder="Type message request details..." rows="3" required class="border border-slate-200 p-3 rounded-xl text-xs focus:outline-indigo-500 bg-slate-50 resize-none custom-scrollbar"></textarea>
                     <button type="submit" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-md transition-all duration-300">Submit Support Ticket</button>
                 </form>
             </div>
         </aside>
 
-        <!-- Right Column Product Collection Display Grid Layout Frame -->
         <section class="lg:col-span-3">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <h2 id="category-title" class="text-2xl font-black text-slate-900 tracking-wide">Wholesale Catalog</h2>
                 <span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-xl flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500 animate-pulse"></i> Live Rupee Rates Dispatched</span>
             </div>
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                <!-- Dynamically constructed items list -->
-            </div>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
         </section>
     </main>
 
-    <!-- Flipkart-Style Fixed Floating Conversational AI Chatbot Terminal Widget -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        <div id="chat-window" class="hidden w-85 h-100 bg-white rounded-2xl shadow-2xl border border-slate-200/80 flex flex-col mb-4 overflow-hidden transform origin-bottom-right transition-all duration-300">
-            <!-- Chatbot Header -->
+        <div id="chat-window" class="hidden w-85 h-100 bg-white rounded-2xl shadow-2xl border border-slate-200/80 flex flex-col mb-4 overflow-hidden dynamic-transition">
             <div class="bg-slate-950 text-white p-4 font-bold text-sm flex justify-between items-center border-b border-indigo-500/20 shadow-md">
                 <div class="flex items-center gap-2">
                     <div class="relative w-7 h-7 bg-gradient-to-tr from-indigo-500 to-cyan-400 rounded-lg flex items-center justify-center text-slate-950"><i class="fa-solid fa-robot text-xs"></i><span class="absolute bottom-0 right-0 w-2 h-2 bg-emerald-400 rounded-full ring-2 ring-slate-950"></span></div>
@@ -132,26 +113,22 @@
                 </div>
                 <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white text-xl transition">&times;</button>
             </div>
-            <!-- Chat Messages Log Stack -->
             <div id="chat-logs" class="p-4 overflow-y-auto flex-grow flex flex-col gap-3 bg-slate-50 text-xs custom-scrollbar">
-                <div class="bg-indigo-50 text-indigo-950 p-3 rounded-2xl max-w-[85%] self-start shadow-xs border border-indigo-100/30 leading-relaxed">
+                <div class="bg-indigo-50 text-indigo-950 p-3 rounded-2xl max-w-[85%] self-start shadow-xs leading-relaxed">
                     Hello! Welcome to the Diksha Traders digital support desk. Ask me about our Krishna Plaza location, catalog rates, or wholesale operations.
                 </div>
             </div>
-            <!-- Chat Input Controller Form -->
             <form onsubmit="sendChatBotMessage(event)" class="p-3 border-t border-slate-100 flex gap-2 bg-white">
                 <input type="text" id="chat-input" placeholder="Ask a support question..." required class="border border-slate-200 px-3 py-2.5 rounded-xl text-xs flex-grow focus:outline-indigo-500 bg-slate-50">
-                <button type="submit" class="bg-indigo-600 text-white px-4 rounded-xl hover:bg-indigo-500 transition-all shadow-md shadow-indigo-600/10 flex items-center justify-center"><i class="fa-solid fa-paper-plane"></i></button>
+                <button type="submit" class="bg-indigo-600 text-white px-4 rounded-xl hover:bg-indigo-500 transition-all flex items-center justify-center"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
-        <!-- Main Float Button Hub -->
-        <button onclick="toggleChatWindow()" class="bg-indigo-600 text-white p-4 rounded-full shadow-2xl hover:bg-indigo-500 transition-all duration-300 hover:scale-110 flex items-center justify-center relative group shadow-indigo-600/30">
+        <button onclick="toggleChatWindow()" class="bg-indigo-600 text-white p-4 rounded-full shadow-2xl hover:bg-indigo-500 transition-all duration-300 hover:scale-110 flex items-center justify-center relative shadow-indigo-600/30">
             <i class="fa-solid fa-comments text-xl"></i>
             <span class="absolute -top-1 -left-1 w-3 h-3 bg-emerald-400 rounded-full ring-2 ring-slate-50 animate-ping"></span>
         </button>
     </div>
 
-    <!-- Side-out Shopping Drawer Cart -->
     <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
         <div class="p-4 bg-slate-950 text-white flex justify-between items-center border-b border-indigo-500/20">
             <h3 class="font-black tracking-wide text-base flex items-center gap-2"><i class="fa-solid fa-file-invoice text-indigo-400"></i> Wholesale Order Sheet</h3>
@@ -163,16 +140,14 @@
                 <span>Total Invoice Value:</span>
                 <span id="cart-total" class="text-indigo-600">₹0.00</span>
             </div>
-            <button onclick="processOrderCheckout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-600/10 transition tracking-wide text-sm uppercase">Confirm Order & Send Invoice</button>
+            <button onclick="processOrderCheckout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg transition tracking-wide text-sm uppercase">Confirm Order & Send Invoice</button>
         </div>
     </div>
 
-    <!-- Integrated Multi-State Authentication Modal Box Wrapper -->
-    <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs transition-opacity duration-300">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300">
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative shadow-2xl border border-slate-100">
             <button onclick="toggleModal('auth-modal')" class="absolute top-4 right-4 text-xl text-slate-400 hover:text-slate-600 transition">&times;</button>
             <h3 id="auth-title" class="text-xl font-black text-slate-900 mb-4 tracking-wide">Merchant Portal Login</h3>
-            
             <form onsubmit="handleAuthSubmit(event)" class="flex flex-col gap-3.5">
                 <div id="email-group" class="hidden flex flex-col gap-1">
                     <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Business Email Address</label>
@@ -180,18 +155,17 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Firm Username Handle</label>
-                    <input type="text" id="auth-user" required placeholder="Enter active user handle" class="border border-slate-200 p-3 rounded-xl text-xs bg-slate-50 focus:outline-indigo-500">
+                    <input type="text" id="auth-user" required placeholder="Enter user handle" class="border border-slate-200 p-3 rounded-xl text-xs bg-slate-50 focus:outline-indigo-500">
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Secure Access Token Key</label>
                     <input type="password" id="auth-pass" required placeholder="••••••••" class="border border-slate-200 p-3 rounded-xl text-xs bg-slate-50 focus:outline-indigo-500">
                 </div>
-                <button type="submit" id="auth-submit-btn" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl text-sm shadow-md shadow-indigo-600/10 transition-all mt-2 uppercase tracking-wider">Sign In Session</button>
+                <button type="submit" id="auth-submit-btn" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition mt-2 uppercase tracking-wider">Sign In Session</button>
             </form>
         </div>
     </div>
 
-    <!-- Previous Orders Invoices History Modal Window Display Panel -->
     <div id="orders-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs">
         <div class="bg-white rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl flex flex-col max-h-[85vh] border border-slate-100">
             <button onclick="toggleModal('orders-modal')" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-slate-600 transition">&times;</button>
@@ -200,29 +174,27 @@
         </div>
     </div>
 
-    <!-- Product Grid Quickview Box Details Popup Modal Frame -->
     <div id="details-modal" class="fixed inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden relative shadow-2xl border border-slate-100">
-            <button onclick="toggleModal('details-modal')" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-white bg-slate-950/40 hover:bg-slate-950/70 w-8 h-8 rounded-full flex items-center justify-center transition z-10">&times;</button>
+            <button onclick="toggleModal('details-modal')" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-white bg-slate-950/40 hover:bg-slate-950/70 w-8 h-8 rounded-full flex items-center justify-center z-10">&times;</button>
             <div id="details-content"></div>
         </div>
     </div>
 
-    <!-- Layout Base Information Footer -->
     <footer class="bg-slate-950 text-slate-400 border-t border-slate-900 mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-sm">
             <div>
                 <h4 class="text-white font-black text-lg mb-4 tracking-wider flex items-center gap-2"><i class="fa-solid fa-store text-indigo-400"></i> DIKSHA TRADERS</h4>
-                <p class="leading-relaxed text-slate-400">Krishna Plaza<br>Kanpur, Uttar Pradesh, India</p>
+                <p class="leading-relaxed text-slate-400">Krishna Plaza,<br>Near Manjushree Talkies,<br>Kanpur, Uttar Pradesh, India</p>
             </div>
             <div>
                 <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4"><i class="fa-solid fa-address-book text-indigo-400"></i> Distribution Channels</h4>
-                <p class="mb-2.5 flex items-center gap-2.5 hover:text-white transition"><i class="fa-solid fa-phone text-emerald-400"></i> +91 9839183050</p>
+                <p class="mb-2.5 flex items-center gap-2.5 hover:text-white transition"><i class="fa-solid fa-phone text-emerald-400"></i> +91 9839183059</p>
                 <p class="flex items-center gap-2.5 hover:text-white transition"><i class="fa-solid fa-envelope text-indigo-400"></i> upendrav13@gmail.com</p>
             </div>
             <div>
                 <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4"><i class="fa-solid fa-circle-nodes text-indigo-400"></i> Wholesale Mandate</h4>
-                <p class="text-xs leading-relaxed text-slate-500">Secure automated merchant dashboard interface. Processing configurations routes verified ledger data directly into localized memory arrays.</p>
+                <p class="text-xs leading-relaxed text-slate-500">Secure automated merchant dashboard interface routing unified operational workflows safely.</p>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-medium">
@@ -230,7 +202,6 @@
         </div>
     </footer>
 
-    <!-- Frontend Core Application Controller Script Logic Framework -->
     <script>
         let allProducts = [];
         let activeCart = {};
@@ -243,7 +214,7 @@
                 const response = await fetch('/api/products');
                 allProducts = await response.json();
                 renderProductGrid(allProducts);
-            } catch (err) { console.error("Component initialization crash wrapper hook:", err); }
+            } catch (err) { console.error("Component initialization error:", err); }
         });
 
         function renderProductGrid(items) {
@@ -260,7 +231,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200/50 overflow-hidden flex flex-col justify-between hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group relative">
                         <div class="relative overflow-hidden bg-slate-100">
                             <img src="${p.img}" alt="${p.name}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 left-3 text-[9px] font-black uppercase tracking-widest bg-slate-950/80 text-white backdrop-blur-xs px-2.5 py-1 rounded-md border border-white/10">${p.category}</span>
+                            <span class="absolute top-3 left-3 text-[9px] font-black uppercase tracking-widest bg-slate-950/80 text-white backdrop-blur-xs px-2.5 py-1 rounded-md">${p.category}</span>
                         </div>
                         <div class="p-5 flex-grow flex flex-col justify-between">
                             <div>
@@ -286,14 +257,9 @@
             const buttons = document.querySelectorAll('.category-btn');
             buttons.forEach(btn => {
                 btn.className = "text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 w-full transition flex items-center justify-between group";
-                const icon = btn.querySelector('i');
-                if(icon) icon.className = "fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 group-hover:translate-x-1 transition";
             });
 
             event.currentTarget.className = "category-btn text-left px-4 py-3 rounded-xl text-sm font-semibold bg-indigo-50 text-indigo-700 w-full transition flex items-center justify-between group";
-            const activeIcon = event.currentTarget.querySelector('i');
-            if(activeIcon) activeIcon.className = "fa-solid fa-chevron-right text-xs opacity-50";
-
             document.getElementById('category-title').innerText = category === 'All' ? 'Wholesale Catalog' : `${category} Collection`;
             renderProductGrid(category === 'All' ? allProducts : allProducts.filter(p => p.category === category));
         }
@@ -326,16 +292,16 @@
                     body: JSON.stringify(payload)
                 });
                 const res = await response.json();
-                if (!response.ok) throw new Error(res.message || "Failed computing authorization validation credentials workflow.");
+                if (!response.ok) throw new Error(res.message);
 
                 if (activeAuthMode === 'login') {
                     currentUser = res.user;
                     localStorage.setItem('merchantUser', JSON.stringify(currentUser));
                     updateUserInterfaceContext();
                     toggleModal('auth-modal');
-                    alert(`Access granted. Welcome back, ${username}!`);
+                    alert(`Access granted. Welcome, ${username}!`);
                 } else {
-                    alert("Merchant operational configuration profile registered. You can now login.");
+                    alert("Merchant profile registered. You can now login.");
                     openAuthModal('login');
                 }
             } catch (err) { alert(err.message); }
@@ -354,12 +320,12 @@
             const authSec = document.getElementById('auth-section');
             const userMenu = document.getElementById('user-menu');
             if(currentUser) {
-                authSec.innerHTML = `<span class="text-xs font-bold bg-slate-800 border border-slate-700 text-indigo-400 px-4 py-2.5 rounded-xl uppercase flex items-center gap-2 shadow-inner"><i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-pulse"></i> ${currentUser.username}</span>`;
+                authSec.innerHTML = `<span class="text-xs font-bold bg-slate-800 border border-slate-700 text-indigo-400 px-4 py-2.5 rounded-xl uppercase flex items-center gap-2"><i class="fa-solid fa-circle text-[8px] text-emerald-400 animate-pulse"></i> ${currentUser.username}</span>`;
                 userMenu.classList.remove('hidden');
             } else {
                 authSec.innerHTML = `
-                    <button onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all duration-300">Login</button>
-                    <button onclick="openAuthModal('register')" class="bg-slate-800 hover:bg-slate-700 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl border border-slate-700 transition-all duration-300">Register</button>`;
+                    <button onclick="openAuthModal('login')" class="bg-indigo-600 hover:bg-indigo-500 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg transition duration-300">Login</button>
+                    <button onclick="openAuthModal('register')" class="bg-slate-880 hover:bg-slate-700 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl border border-slate-700 transition duration-300">Register</button>`;
                 userMenu.classList.add('hidden');
             }
         }
@@ -386,10 +352,10 @@
                             <h4 class="font-extrabold text-slate-900 text-sm leading-tight">${product.name}</h4>
                             <p class="text-xs text-slate-400 font-semibold mt-0.5">₹${product.price} × ${qty}</p>
                         </div>
-                        <div class="flex items-center gap-2.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200/40">
-                            <button onclick="updateCartQuantity(${product.id}, -1)" class="font-black px-1.5 hover:text-rose-600 transition text-sm">-</button>
+                        <div class="flex items-center gap-2.5 bg-slate-100 p-1.5 rounded-xl">
+                            <button onclick="updateCartQuantity(${product.id}, -1)" class="font-black px-1.5 hover:text-rose-600 text-sm">-</button>
                             <span class="text-xs font-bold w-4 text-center text-slate-700">${qty}</span>
-                            <button onclick="updateCartQuantity(${product.id}, 1)" class="font-black px-1.5 hover:text-emerald-600 transition text-sm">+</button>
+                            <button onclick="updateCartQuantity(${product.id}, 1)" class="font-black px-1.5 hover:text-emerald-600 text-sm">+</button>
                         </div>
                     </div>`;
             });
@@ -404,7 +370,7 @@
             document.getElementById('details-content').innerHTML = `
                 <img src="${product.img}" alt="${product.name}" class="w-full h-72 object-cover bg-slate-50">
                 <div class="p-6">
-                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-100/30">${product.category}</span>
+                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">${product.category}</span>
                     <h3 class="text-xl font-black text-slate-900 mt-3">${product.name}</h3>
                     <p class="text-xs text-slate-400 mt-1">Wholesale Distributor Label: <span class="font-bold text-slate-600">${product.brand}</span></p>
                     <div class="mt-5 bg-slate-50 border border-slate-200/50 p-4 rounded-2xl flex justify-between items-center">
@@ -412,7 +378,7 @@
                             <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Wholesale Base Rate</p>
                             <p class="text-2xl font-black text-slate-950 mt-0.5">₹${product.price}</p>
                         </div>
-                        <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100 flex items-center gap-1.5"><i class="fa-solid fa-boxes-stacked"></i> Batch Ready: ${product.stock} units</span>
+                        <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100"><i class="fa-solid fa-boxes-stacked"></i> Batch Ready: ${product.stock}</span>
                     </div>
                     <button onclick="addToCartItem(${product.id}); toggleModal('details-modal');" class="w-full bg-slate-950 hover:bg-indigo-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition mt-6 text-sm uppercase tracking-wide">Append Bulk Lot Sheet</button>
                 </div>`;
@@ -428,23 +394,20 @@
                 const log = await response.json();
                 container.innerHTML = '';
                 if(log.length === 0) {
-                    container.innerHTML = '<p class="text-slate-400 text-center py-16 text-xs font-semibold bg-slate-50 rounded-2xl border border-dashed border-slate-200">No historical invoices registered under this account handle profile context.</p>';
+                    container.innerHTML = '<p class="text-slate-400 text-center py-16 text-xs font-semibold bg-slate-50 rounded-2xl border border-slate-200">No historical invoices registered under this handle.</p>';
                     return;
                 }
                 log.reverse().forEach(o => {
                     container.innerHTML += `
-                        <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:border-slate-300 transition">
+                        <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <span class="font-black text-slate-950 text-sm tracking-wide">${o.orderId}</span>
-                                    <span class="text-[9px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-md">Dispatched</span>
-                                </div>
-                                <p class="text-xs text-slate-400 font-medium mt-1"><i class="fa-solid fa-calendar-day text-[10px]"></i> Date Logged: ${o.date} | Receipt Dispatched: ${o.email}</p>
+                                <span class="font-black text-slate-950 text-sm tracking-wide">${o.orderId}</span>
+                                <p class="text-xs text-slate-400 font-medium mt-1">Date Logged: ${o.date} | Invoice Copy Sent To: ${o.email}</p>
                             </div>
                             <span class="text-lg font-black text-indigo-600">${o.totalAmount}</span>
                         </div>`;
                 });
-            } catch(err) { container.innerHTML = '<p class="text-rose-500 text-center py-6 text-xs">Error loading database lines wrapper.</p>'; }
+            } catch(err) { container.innerHTML = '<p class="text-rose-500 text-center py-6 text-xs">Error loading dataset.</p>'; }
         }
 
         async function handleSupportSubmit(e) {
@@ -462,7 +425,7 @@
                 });
                 const res = await response.json();
                 if(res.success) {
-                    alert(`Support ticket initialized successfully!\nReference Tracking ID: ${res.ticketId}`);
+                    alert(`Support ticket initialized!\nTracking ID: ${res.ticketId}`);
                     e.target.reset();
                 }
             } catch (err) { alert("Failed submitting helpdesk request."); }
@@ -474,7 +437,7 @@
             const logBox = document.getElementById('chat-logs');
             const userMsg = input.value.trim();
             
-            logBox.innerHTML += `<div class="bg-indigo-600 text-white p-3 rounded-2xl max-w-[85%] self-end shadow-md shadow-indigo-600/10 leading-relaxed">${userMsg}</div>`;
+            logBox.innerHTML += `<div class="bg-indigo-600 text-white p-3 rounded-2xl max-w-[85%] self-end shadow-md leading-relaxed">${userMsg}</div>`;
             input.value = '';
             logBox.scrollTop = logBox.scrollHeight;
 
@@ -515,12 +478,12 @@
                 });
                 const confirmation = await response.json();
                 if(confirmation.success) {
-                    alert(`Wholesale Batch Order Confirmed Successfully!\nOrder Reference ID: ${confirmation.order.orderId}\nInvoice statement copy triggered to ${payload.email}`);
+                    alert(`Wholesale Order Confirmed!\nInvoice ID: ${confirmation.order.orderId}\nSent copy to ${payload.email}`);
                     activeCart = {};
                     updateCartInterfaceSummary();
                     toggleCart();
                 }
-            } catch (err) { alert("Checkout transaction processing failure error wrapper."); }
+            } catch (err) { alert("Checkout transaction processing failure."); }
         }
     </script>
 </body>
